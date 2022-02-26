@@ -1,11 +1,16 @@
-import { StatusBar } from 'expo-status-bar';
+import { useState } from 'react'
 import { StyleSheet, Text, View } from 'react-native';
+import { ViewBundle } from './Components/ViewBundle';
 
 export default function App() {
+  const [value, setValue] = useState();
+
+  const handleChangeValue = (value) => {
+
+  }
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <ViewBundle value={-1} />
     </View>
   );
 }
