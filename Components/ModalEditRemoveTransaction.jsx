@@ -25,10 +25,6 @@ export const ModalEditRemoveTransaction = ({viewModal, setViewModal, transaction
             return;
         }
         handleSubmit();
-        setValue("");
-        setDescription("");
-        setDate("");
-        setMsg("");
         setViewModal(false);
     }
 

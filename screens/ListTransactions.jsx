@@ -2,12 +2,12 @@ import React from 'react'
 import {FlatList, StyleSheet, Text, View} from 'react-native'
 import { ViewTransactions } from '../Components/ViewTransactions'
 
-export const ListTransactions = (listTransactions, onEdit, onDelete) => {
-    console.log("LISTA: ",listTransactions.listTransactions);
+export const ListTransactions = ({listTransactions, onEdit, onDelete}) => {
+    console.log("LISTA: ",listTransactions);
     console.log("onDelete: ",onDelete);
   return (
     <View style={styles.listData}>
-         <FlatList data={listTransactions.listTransactions} renderItem={ itemData => {
+         <FlatList data={listTransactions} renderItem={ itemData => {
                 console.log("TRANSACCION: ",itemData.item)
                 return(
                     <ViewTransactions

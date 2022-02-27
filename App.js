@@ -18,13 +18,21 @@ export default function App() {
   }
 
   const handleRemoveTransaction = (id) => {
-    console.log("ONDELETE");
     setListTransactions(listTransactions.filter(transactions => transactions.id != id));
+    //SE DESCUENTA
+    const BEFORETRANSACTION = listTransactions.filter((transactions) => transactions.id === id);
+    const beforeValue = value - parseFloat(BEFORETRANSACTION[0].value);
+    setValue(beforeValue);
   }
   const handleEditTransaction = (id, valor, description, date) => {
-    console.log("ONEDIT");
     handleRemoveTransaction(id);
+    //LE QUITO EL VALOR ANTERIOR
+    const BEFORETRANSACTION = listTransactions.filter((transactions) => transactions.id === id);
+    const beforeValue = value - parseFloat(BEFORETRANSACTION[0].value);
+    setValue(beforeValue);
     setListTransactions((transactions) => [...transactions, {id: id, value: valor, description: description, date: date}])
+    //LE SUMO EL VALOR EDITADO
+    setValue(beforeValue + parseFloat(valor));
   }
   return (
     <View style={styles.container}>
