@@ -5,9 +5,9 @@ export const ViewBundle = ({value}) => {
   return (
     <View >
         {value < 0 ?
-            <Text style={styles.totalDown}>{value + " €"}</Text>
+            <Text style={styles.totalDown}>{parseFloat(value).toFixed(2) + " €"}</Text>
         :
-        <Text style={styles.totalUp}>{value + " €"}</Text>
+        <Text style={styles.totalUp}>{parseFloat(value).toFixed(2) + " €"}</Text>
         }
         
     </View>
@@ -22,12 +22,16 @@ const styles = StyleSheet.create({
         padding: 5,
         borderWidth: 1,
         borderRadius: 5,
-        width: '50%'
+        width: '50%',
+        borderColor: '#BB86FC'
     },
     totalUp: {
-        color: 'black',
+        color: 'white',
         fontSize: 19,
         backgroundColor: '#565656',
-        padding: 5
+        padding: 5,
+        borderWidth: 1,
+        borderRadius: 5,
+        borderColor: '#BB86FC'
     }
 })

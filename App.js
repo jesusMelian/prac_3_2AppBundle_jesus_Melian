@@ -3,6 +3,7 @@ import { StyleSheet, Text, TouchableOpacity, Image, View } from 'react-native';
 import { Header } from './Components/Header';
 import { ModalAdd } from './Components/ModalAdd';
 import { ViewBundle } from './Components/ViewBundle';
+import { ListTransactions } from './screens/ListTransactions';
 
 export default function App() {
   const [value, setValue] = useState(0);
@@ -18,6 +19,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Header value={value} />
+      <ListTransactions listTransactions={listTransactions} />
       <TouchableOpacity onPress={() => {setViewModalAdd(true)}} style={styles.fabLocationBL}>
         <View style={styles.fab}>
           <Image source={require("./Icons/plus.png")} style={styles.tinyIcon}/>

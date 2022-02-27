@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import { Button, Modal, StyleSheet, TextInput, TouchableOpacity, Image, View} from 'react-native';
+import DatePicker from 'react-native-datepicker';
 
 export const ModalAdd = ({viewModal, setViewModal, setTransaction, id}) => {
     const [value, setValue] = useState("");
@@ -15,9 +16,6 @@ export const ModalAdd = ({viewModal, setViewModal, setTransaction, id}) => {
         setDescription(description);
     }
 
-    const handleDateChange = (date) => {
-        setDate(date);
-    }
     const validateTransaction = () => {
         //FALTAN LAS VALIDACIONES
         handleSubmit();
@@ -28,6 +26,7 @@ export const ModalAdd = ({viewModal, setViewModal, setTransaction, id}) => {
     }
 
     const handleSubmit = () => {
+        console.log("DATE: ",date);
         setTransaction(value, description, date);
     }
   return (
@@ -47,13 +46,46 @@ export const ModalAdd = ({viewModal, setViewModal, setTransaction, id}) => {
             value={description}
             onChangeText={handleDescriptionChange}
             />
-            <TextInput 
+            <DatePicker
+            style={styles.textInput}
+            date={date}
+            mode="date"
+            placeholder="Seleccionar fecha"
+            format="DD/MM/YYYY"
+            minDate="01-01-2022"
+            maxDate="01-01-2023"
+            confirmBtnText="Confirm"
+            cancelBtnText="Cancel"
+            customStyles={{
+                dateIcon: {
+                    position: 'absolute',
+                    right: -5,
+                    top: 4,
+                    marginLeft: 0,
+                },
+                dateInput: {
+                    borderColor : "#BB86FC",
+                    alignItems: "flex-start",
+                    borderWidth: 0,
+                    borderBottomWidth: 1,
+                },
+                placeholderText: {
+                    color: "#BB86FC"
+                },
+
+            }}
+    
+            onDateChange={(date) => {
+                setDate(date);
+            }}
+            />
+            {/* <TextInput 
             style={styles.textInput}
             placeholder='fecha'
             placeholderTextColor={'#BB86FC'}
             value={date}
             onChangeText={handleDateChange}
-            />
+            /> */}
             <TouchableOpacity onPress={() => validateTransaction()}>
             <View>
                 <View style={styles.btnSave}>
@@ -78,6 +110,7 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: "rgba(0,0,0, 0.7)",
     },
+    
     textInput: {
         borderBottomColor: "#BB86FC",
         borderBottomWidth: 1,
