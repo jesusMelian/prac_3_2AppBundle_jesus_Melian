@@ -4,6 +4,7 @@ import { ViewTransactions } from '../Components/ViewTransactions'
 
 export const ListTransactions = (listTransactions, onEdit, onDelete) => {
     console.log("LISTA: ",listTransactions.listTransactions);
+    console.log("onDelete: ",onDelete);
   return (
     <View style={styles.listData}>
          <FlatList data={listTransactions.listTransactions} renderItem={ itemData => {

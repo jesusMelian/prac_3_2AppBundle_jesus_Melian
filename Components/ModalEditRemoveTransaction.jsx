@@ -1,15 +1,15 @@
-import React from 'react'
-import { useState } from 'react'
-import { Button, Modal, StyleSheet, Text, TextInput, TouchableOpacity, Image, View} from 'react-native';
+import React, {useState} from 'react'
+import { Button, Modal, StyleSheet, TextInput, TouchableOpacity, Image, View} from 'react-native';
 import DatePicker from 'react-native-datepicker';
 
-export const ModalAdd = ({viewModal, setViewModal, setTransaction, id}) => {
-    const [value, setValue] = useState("");
-    const [description, setDescription] = useState("");
-    const [date, setDate] = useState("");
+export const ModalEditRemoveTransaction = ({viewModal, setViewModal, transaction, onEdit, onDelete}) => {
+    const [value, setValue] = useState(transaction.value);
+    const [description, setDescription] = useState(transaction.description);
+    const [date, setDate] = useState(transaction.date);
     const [msg, setMsg] = useState("");
 
     const handleValueChange = (value) => {
+        console.log(value);
         setValue(value)
     }
 
@@ -33,7 +33,7 @@ export const ModalAdd = ({viewModal, setViewModal, setTransaction, id}) => {
     }
 
     const handleSubmit = () => {
-        setTransaction(value, description, date);
+        onEdit(transaction.id, value, description, date);
     }
   return (
     <Modal visible={viewModal} animationType={"slide"} transparent={true}>
@@ -92,12 +92,19 @@ export const ModalAdd = ({viewModal, setViewModal, setTransaction, id}) => {
             disabled
             />
             <TouchableOpacity onPress={() => validateTransaction()}>
-            <View>
-                <View style={styles.btnSave}>
-                    <Image source={require("../Icons/save.png")} style={styles.tinyIcon}/>
+                <View>
+                    <View style={styles.btnSave}>
+                        <Image source={require("../Icons/save.png")} style={styles.tinyIcon}/>
+                    </View>
                 </View>
-            </View>
-        </TouchableOpacity>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => onDelete(transaction.id)}>
+                <View>
+                    <View style={styles.btnSave}>
+                        <Image source={require("../Icons/delete.png")} style={styles.tinyIcon}/>
+                    </View>
+                </View>
+            </TouchableOpacity>
         </View>
     </Modal>
   )
@@ -136,7 +143,7 @@ const styles = StyleSheet.create({
         width:40,
         height: 40,
     },
-
+    
     text: {
         color: "red"
     }

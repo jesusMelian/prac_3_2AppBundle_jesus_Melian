@@ -16,10 +16,20 @@ export default function App() {
     setListTransactions((transactions) => [...transactions, {id: id, value: valor, description: description, date: date}])
     setValue(value + parseFloat(valor));
   }
+
+  const handleRemoveTransaction = (id) => {
+    console.log("ONDELETE");
+    setListTransactions(listTransactions.filter(transactions => transactions.id != id));
+  }
+  const handleEditTransaction = (id, valor, description, date) => {
+    console.log("ONEDIT");
+    handleRemoveTransaction(id);
+    setListTransactions((transactions) => [...transactions, {id: id, value: valor, description: description, date: date}])
+  }
   return (
     <View style={styles.container}>
       <Header value={value} />
-      <ListTransactions listTransactions={listTransactions} />
+      <ListTransactions listTransactions={listTransactions} onEdit={handleEditTransaction} onDelete={handleRemoveTransaction}/>
       <TouchableOpacity onPress={() => {setViewModalAdd(true)}} style={styles.fabLocationBL}>
         <View style={styles.fab}>
           <Image source={require("./Icons/plus.png")} style={styles.tinyIcon}/>
