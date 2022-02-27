@@ -5,9 +5,9 @@ export const ViewBundle = ({value}) => {
   return (
     <View >
         {value < 0 ?
-            <Text style={styles.totalDown}>{value}</Text>
+            <Text style={styles.totalDown}>{value + " €"}</Text>
         :
-        <Text style={styles.totalUp}>{value}</Text>
+        <Text style={styles.totalUp}>{value + " €"}</Text>
         }
         
     </View>

@@ -1,23 +1,29 @@
 import { useState } from 'react'
 import { StyleSheet, Text, TouchableOpacity, Image, View } from 'react-native';
 import { Header } from './Components/Header';
+import { ModalAdd } from './Components/ModalAdd';
 import { ViewBundle } from './Components/ViewBundle';
 
 export default function App() {
-  const [value, setValue] = useState();
+  const [value, setValue] = useState(0);
   const [listTransactions, setListTransactions] = useState([]);
+  const [viewModalAdd, setViewModalAdd] = useState(false);
+  const [id, setId] = useState(0);
 
-  const handleChangeValue = (value) => {
-    setValue(parseInteger(value));
+  const handleChangeTransaction = (valor, description, date) => {
+    setId(id+1)
+    setListTransactions((transactions) => [...transactions, {id: id, value: valor, description: description, date: date}])
+    setValue(value + parseFloat(valor));
   }
   return (
     <View style={styles.container}>
-      <Header value={-1} />
-      <TouchableOpacity style={styles.fabLocationBL}>
-            <View style={styles.fab}>
-              <Image source={require("./Icons/plus.png")} style={styles.tinyIcon}/>
-            </View>
-        </TouchableOpacity>
+      <Header value={value} />
+      <TouchableOpacity onPress={() => {setViewModalAdd(true)}} style={styles.fabLocationBL}>
+        <View style={styles.fab}>
+          <Image source={require("./Icons/plus.png")} style={styles.tinyIcon}/>
+        </View>
+      </TouchableOpacity>
+      <ModalAdd viewModal={viewModalAdd} setViewModal={setViewModalAdd} setTransaction={handleChangeTransaction} id={id}/>
     </View>
   );
 }
