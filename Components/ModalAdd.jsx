@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import { Button, Modal, StyleSheet, Text, TextInput, TouchableOpacity, Image, View} from 'react-native';
 import DatePicker from 'react-native-datepicker';
+import Colors from '../Constants/Colors';
 
 export const ModalAdd = ({viewModal, setViewModal, setTransaction, id}) => {
     const [value, setValue] = useState("");
@@ -70,13 +71,13 @@ export const ModalAdd = ({viewModal, setViewModal, setTransaction, id}) => {
                     marginLeft: 0,
                 },
                 dateInput: {
-                    borderColor : "#BB86FC",
+                    borderColor : Colors.primary,
                     alignItems: "flex-start",
                     borderWidth: 0,
                     borderBottomWidth: 1,
                 },
                 placeholderText: {
-                    color: "#BB86FC"
+                    color: Colors.primary
                 },
 
             }}
@@ -87,7 +88,7 @@ export const ModalAdd = ({viewModal, setViewModal, setTransaction, id}) => {
             />
             <TextInput 
             style={styles.text}
-            placeholderTextColor={'#BB86FC'}
+            placeholderTextColor={Colors.primary}
             value={msg}
             disabled
             />
@@ -117,14 +118,14 @@ const styles = StyleSheet.create({
     },
     
     textInput: {
-        borderBottomColor: "#BB86FC",
+        borderBottomColor: Colors.primary,
         borderBottomWidth: 1,
         height: 40,
         width: "75%",
-        color: "#BB86FC",
+        color: Colors.primary,
     },
     btnSave: {
-        backgroundColor: "#BB86FC",
+        backgroundColor: Colors.primary,
         width: 40,
         height: 40,
         borderRadius: 5,

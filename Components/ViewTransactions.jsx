@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native'
 import { ModalEditRemoveTransaction } from './ModalEditRemoveTransaction';
+import Colors from '../Constants/Colors';
 
 export const ViewTransactions = ({transaction, key, onEdit, onDelete}) => {
     const [viewModal, setViewModal] = useState(false);
@@ -46,7 +47,7 @@ const styles = StyleSheet.create({
         fontSize: 26,
     },
     date: {
-        color: '#BB86FC',
+        color: Colors.primary,
         fontSize: 26,
         position: 'absolute',
         bottom: 0,

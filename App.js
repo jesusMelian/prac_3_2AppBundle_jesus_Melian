@@ -4,6 +4,7 @@ import { Header } from './Components/Header';
 import { ModalAdd } from './Components/ModalAdd';
 import { ViewBundle } from './Components/ViewBundle';
 import { ListTransactions } from './screens/ListTransactions';
+import Colors from './Constants/Colors';
 
 export default function App() {
   const [value, setValue] = useState(0);
@@ -54,18 +55,18 @@ const styles = StyleSheet.create({
     backgroundColor: '#000',
   },
   fab: {
-    backgroundColor: "#5856D6",
+    backgroundColor: Colors.botons,
     width: 60,
     height: 60,
     borderRadius: 30,
     justifyContent: 'center'
-},
-fabLocationBL: {
+  },
+  fabLocationBL: {
     position: 'absolute',
     bottom: 0,
     right: 65
-},
-tinyIcon: {
+  },
+  tinyIcon: {
     width: 60,
-}
+  }
 });

@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import { Button, Modal, StyleSheet, TextInput, TouchableOpacity, Image, View} from 'react-native';
 import DatePicker from 'react-native-datepicker';
+import Colors from '../Constants/Colors';
 
 export const ModalEditRemoveTransaction = ({viewModal, setViewModal, transaction, onEdit, onDelete}) => {
     const [value, setValue] = useState(transaction.value);
@@ -37,14 +38,14 @@ export const ModalEditRemoveTransaction = ({viewModal, setViewModal, transaction
             <TextInput 
             style={styles.textInput}
             placeholder='importe'
-            placeholderTextColor={'#BB86FC'}
+            placeholderTextColor={Colors.primary}
             value={value}
             onChangeText={handleValueChange}
             />
             <TextInput 
             style={styles.textInput}
             placeholder='descripción'
-            placeholderTextColor={'#BB86FC'}
+            placeholderTextColor={Colors.primary}
             value={description}
             onChangeText={handleDescriptionChange}
             />
@@ -66,13 +67,13 @@ export const ModalEditRemoveTransaction = ({viewModal, setViewModal, transaction
                     marginLeft: 0,
                 },
                 dateInput: {
-                    borderColor : "#BB86FC",
+                    borderColor : Colors.primary,
                     alignItems: "flex-start",
                     borderWidth: 0,
                     borderBottomWidth: 1,
                 },
                 placeholderText: {
-                    color: "#BB86FC"
+                    color: Colors.primary
                 },
 
             }}
@@ -83,7 +84,7 @@ export const ModalEditRemoveTransaction = ({viewModal, setViewModal, transaction
             />
             <TextInput 
             style={styles.text}
-            placeholderTextColor={'#BB86FC'}
+            placeholderTextColor={Colors.primary}
             value={msg}
             disabled
             />
@@ -120,14 +121,14 @@ const styles = StyleSheet.create({
     },
     
     textInput: {
-        borderBottomColor: "#BB86FC",
+        borderBottomColor: Colors.primary,
         borderBottomWidth: 1,
         height: 40,
         width: "75%",
-        color: "#BB86FC",
+        color: Colors.primary,
     },
     btnSave: {
-        backgroundColor: "#BB86FC",
+        backgroundColor: Colors.primary,
         width: 40,
         height: 40,
         borderRadius: 5,

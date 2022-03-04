@@ -1,5 +1,6 @@
 import React from 'react'
 import { Text, View, StyleSheet} from 'react-native'
+import Colors from '../Constants/Colors';
 
 export const ViewBundle = ({value}) => {
   return (
@@ -18,20 +19,20 @@ const styles = StyleSheet.create({
     totalDown: {
         color: 'red',
         fontSize: 19,
-        backgroundColor: '#565656',
+        backgroundColor: Colors.secondary,
         padding: 5,
         borderWidth: 1,
         borderRadius: 5,
         width: '50%',
-        borderColor: '#BB86FC'
+        borderColor: Colors.primary
     },
     totalUp: {
         color: 'white',
         fontSize: 19,
-        backgroundColor: '#565656',
+        backgroundColor: Colors.secondary,
         padding: 5,
         borderWidth: 1,
         borderRadius: 5,
-        borderColor: '#BB86FC'
+        borderColor: Colors.primary
     }
 })
